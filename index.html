@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyWise AI — University Study Assistant</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">S</span><div><strong>StudyWise AI</strong><small>University study assistant</small></div></div>
+    <span class="badge">Powered by OpenAI</span>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">STUDY SMARTER</p>
+        <h1>Turn your course material into an exam strategy.</h1>
+        <p class="sub">Upload lecture notes or paste material. StudyWise turns it into summaries, quizzes and a focused revision plan.</p>
+      </div>
+      <div class="hero-card"><div class="hero-number">3</div><div><b>Core tools</b><p>Summarise · Quiz · Prepare</p></div></div>
+    </section>
+
+    <section class="workspace">
+      <div class="panel material-panel">
+        <div class="panel-head"><div><h2>1. Add course material</h2><p>Your material stays in this session.</p></div></div>
+        <label class="dropzone" id="dropzone">
+          <input id="file" type="file" accept=".pdf,application/pdf" />
+          <span class="upload-icon">↑</span>
+          <b>Upload a PDF</b>
+          <span>or click to browse</span>
+        </label>
+        <div id="fileStatus" class="file-status"></div>
+        <textarea id="material" placeholder="Or paste lecture notes, textbook extracts, slides text, learning outcomes, etc."></textarea>
+        <div class="char"><span id="chars">0</span> characters</div>
+      </div>
+
+      <div class="panel tools-panel">
+        <div class="panel-head"><div><h2>2. Choose a study tool</h2><p>Generate an output from your material.</p></div></div>
+
+        <div class="tool-grid">
+          <button class="tool active" data-tool="summary"><span>▤</span><b>Smart Summary</b><small>Key ideas, definitions and exam traps</small></button>
+          <button class="tool" data-tool="quiz"><span>?</span><b>Quiz Me</b><small>Practice MCQs with explanations</small></button>
+          <button class="tool" data-tool="plan"><span>✓</span><b>Exam Plan</b><small>Build a focused revision schedule</small></button>
+        </div>
+
+        <div id="options" class="options">
+          <label>Summary depth
+            <select id="summaryLevel"><option value="balanced">Balanced</option><option value="concise">Concise</option><option value="detailed">Detailed</option></select>
+          </label>
+          <div class="quiz-options hidden">
+            <label>Questions <input id="count" type="number" min="1" max="20" value="10"></label>
+            <label>Difficulty
+              <select id="difficulty"><option>mixed</option><option>easy</option><option>medium</option><option>hard</option></select>
+            </label>
+          </div>
+          <div class="plan-options hidden">
+            <label>Exam date <input id="examDate" type="date"></label>
+            <label>Hours/day <input id="hours" type="number" min="0.5" max="12" step="0.5" value="2"></label>
+          </div>
+        </div>
+
+        <button id="generate" class="primary">Generate study material →</button>
+        <div id="error" class="error hidden"></div>
+      </div>
+    </section>
+
+    <section id="output" class="panel output hidden">
+      <div class="output-head"><div><p class="eyebrow">YOUR STUDY MATERIAL</p><h2 id="outputTitle">Result</h2></div><button id="copy" class="secondary">Copy</button></div>
+      <div id="result"></div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
