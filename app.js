@@ -1,3 +1,7 @@
+const SUPABASE_URL = "https://lenqzthtsizizhtdlxif.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_m-xOGuu-z4y01pTuY0nEWQ_cp60tRJI";
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
 const $ = s => document.querySelector(s);
 
 let tool = "summary";
