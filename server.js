@@ -8,7 +8,7 @@ import OpenAI from "openai";
 const app = express();
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 15 * 1024 * 1024 } });
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-const MODEL = process.env.OPENAI_MODEL || "gpt-5.6-luna";
+const MODEL = process.env.OPENAI_MODEL || "gpt-5.6";
 
 app.use(express.json({ limit: "5mb" }));
 app.use(express.static("."));
