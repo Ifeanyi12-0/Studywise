@@ -11,7 +11,11 @@ const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.6-luna";
 
 app.use(express.json({ limit: "5mb" }));
-app.use(express.static("public"));
+app.use(express.static("."));
+
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: "." });
+});
 
 const baseInstructions = `
 You are StudyWise AI, an academic study assistant for university students.
